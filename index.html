@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Caller</title>
+    <style>
+    .hide{visibility: hidden;}
+    .full{height:400px;}
+    </style>
+</head>
+<body>
+
+    <div id="littleCard"></div>
+    <div id="bigCard"></div>
+    <button id="go">GO</button>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javaScript">
+let options = ["beachball","seagull","crab","flipflops", "icecream", "scuba", "seashell", "umbrella"];
+const shuffle = function (array) {
+	let currentIndex = array.length;
+	let temporaryValue, randomIndex;
+	while (0 !== currentIndex) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+	return array;
+};
+let draw = shuffle(options);
+
+
+$( document ).ready(function() {
+    let i = 0;
+    function begin() {
+  //alert(shuffle(options));
+    $("#go").html("Next");
+    if(i<8){
+    $("#littleCard").append(draw[i]+" ");
+    $("#bigCard").html('<img class = "full" src="'+draw[i]+'.jpg"/>');
+    i++;
+    }
+    else{
+        $("#go").addClass("hide");
+        $("#bigCard").html("GAME OVER!" + '<button id="new">NEW GAME</button>');
+      
+        }
+    }
+
+    function refresh(){
+        location.reload();
+        
+    }
+$(document).on("click", "#new", refresh);
+
+
+$( "#go" ).on( "click", begin );
+   
+
+});
+
+
+</script>
+</html>
