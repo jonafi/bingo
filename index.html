@@ -9,15 +9,17 @@
     <style>
         
     .hide{visibility: hidden;}
-    
     .full{height:400px; max-width:100%;}
     .tiny{height:30px; padding-right:5px;}
+    .gameover{font-size: large; font-weight:bold; margin-top:20px;}
+    button{height:80px; width:100px; margin:10px;}
+
   
     </style>
 </head>
 <body>
-    <div class="container">
-    <button id="go">GO</button>
+    <div class="container text-center" >
+    <button id="go">START</button>
     <div id="littleCard"></div>
     <div id="bigCard"></div>
 </div>
@@ -46,7 +48,7 @@ $( document ).ready(function() {
     let i = 0;
     function begin() {
   //alert(shuffle(options));
-    $("#go").html("Next");
+    $("#go").html("NEXT");
     if(i<8){
    // $("#littleCard").append(draw[i]+" ");
     $("#bigCard").html('<img class = "full" src="'+draw[i]+'.jpg"/>');
@@ -55,7 +57,7 @@ $( document ).ready(function() {
     }
     else{
         $("#go").addClass("hide");
-        $("#bigCard").html("GAME OVER!" + '<button id="new">NEW GAME</button>');
+        $("#bigCard").html('<p class="gameover">GAME OVER!</p><button id="new">NEW GAME</button>');
       
         }
     }
