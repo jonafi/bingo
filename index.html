@@ -1,79 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo Caller</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <style>
-        
-    .hide{visibility: hidden;}
-    .full{height:400px; max-width:100%;}
-    .tiny{height:30px; padding-right:5px;}
-    .gameover{font-size: large; font-weight:bold; margin-top:20px;}
-    button{height:80px; width:100px; margin:10px;}
-
-  
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container text-center" >
-    <button id="go">START</button>
-    <div id="littleCard"></div>
-    <div id="bigCard"></div>
-</div>
 
+<body>
+    <div class="container text-center">
+        <button id="go">START</button>
+        <div id="littleCard"></div>
+        <div id="bigCard"></div>
+    </div>
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javaScript">
-let options = ["beachball","seagull","crab","flipflops", "icecream", "scuba", "seashell", "umbrella"];
-const shuffle = function (array) {
-	let currentIndex = array.length;
-	let temporaryValue, randomIndex;
-	while (0 !== currentIndex) {
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
-		temporaryValue = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = temporaryValue;
-	}
-	return array;
-};
-let draw = shuffle(options);
-
-
-$( document ).ready(function() {
-    let i = 0;
-    function begin() {
-  //alert(shuffle(options));
-    $("#go").html("NEXT");
-    if(i<8){
-   // $("#littleCard").append(draw[i]+" ");
-    $("#bigCard").html('<img class = "full" src="'+draw[i]+'.jpg"/>');
-    $("#littleCard").append('<img class = "tiny" src="'+draw[i]+'.jpg"/>');
-    i++;
-    }
-    else{
-        $("#go").addClass("hide");
-        $("#bigCard").html('<p class="gameover">GAME OVER!</p><button id="new">NEW GAME</button>');
-      
-        }
-    }
-
-    function refresh(){
-        location.reload();
-        
-    }
-$(document).on("click", "#new", refresh);
-
-
-$( "#go" ).on( "click", begin );
-   
-
-});
-
-
-</script>
 </html>

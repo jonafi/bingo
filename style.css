@@ -1,0 +1,25 @@
+.hide {
+    visibility: hidden;
+}
+
+.full {
+    height: 400px;
+    max-width: 100%;
+}
+
+.tiny {
+    height: 30px;
+    padding-right: 5px;
+}
+
+.gameover {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+button {
+    height: 80px;
+    width: 100px;
+    margin: 10px;
+}
